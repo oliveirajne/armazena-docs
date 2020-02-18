@@ -30,3 +30,8 @@ Route::get('/dashboard', [
     'as' => 'dashboard',
     'middleware' => 'auth'
 ]);
+
+Route::get('/logout', [
+    'uses' => 'UserController@getLogout',
+    'as' => 'logout'
+]);
