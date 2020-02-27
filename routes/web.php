@@ -50,3 +50,11 @@ Route::get('/userimage/{filename}', [
     'uses' => 'UserController@getUserImage',
     'as' => 'account.image'
 ]);
+
+// Document routes
+
+Route::post('/createUserDocument', [
+    'uses' => 'DocumentController@postCreateDocument',
+    'as' => 'document.create'
+]);
+
