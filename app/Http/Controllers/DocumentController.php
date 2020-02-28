@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+//use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -23,8 +24,11 @@ class DocumentController extends Controller
             $request->user()->userDocuments()->save($document);
 
             $filename = $_FILES['doc']['name'];
-        
-            Storage::disk('local')->put($filename, File::get($file));
+//            $localFile = File::get($file);
+//            Storage::disk('local')->put($filename, File::get($file));
+//            Storage::disk('local')->put($filename, File::get($file));
+            Storage::putFileAs('docs', $file, $filename);
+//            Storage::disk('ftp')->put($filename, $localFile);
         }
 
         return redirect()->route('dashboard');
