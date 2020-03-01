@@ -18,20 +18,26 @@ class DocumentController extends Controller
 
         if ($file) {
 
-            $document = new Document(); 
-
-            $document->filename = $_FILES['doc']['name'];
-            $request->user()->userDocuments()->save($document);
-
             $filename = $_FILES['doc']['name'];
 //            $localFile = File::get($file);
 //            Storage::disk('local')->put($filename, File::get($file));
 //            Storage::disk('local')->put($filename, File::get($file));
-            Storage::putFileAs('docs', $file, $filename);
+            if ( Storage::putFileAs('docs', $file, $filename) ) {
+                
+                $document = new Document(); 
+
+                $document->filename = $_FILES['doc']['name'];
+                $request->user()->userDocuments()->save($document);
+
+                $message = 'File sucessfully uploaded!';
+            }
+            else {
+                $message = 'There was an error!';
+            }
 //            Storage::disk('ftp')->put($filename, $localFile);
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with(['message' => $message]);
 
     }
 

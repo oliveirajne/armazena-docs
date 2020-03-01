@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @include('includes.message-block')
     <section class="row box-1">
         <div class="col-md-6 offset-md-3">
             <header>

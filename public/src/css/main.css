@@ -2,3 +2,15 @@
     padding: 16px 0;
     border-bottom: 1px solid #ccc;
 }
+.error {
+    text-align: center;
+    border: 1px solid red;
+    background-color: #f9b5af;
+    color: red;
+}
+.success {
+    text-align: center;
+    border : 1px solid green;
+    background-color: #d1f9da;
+    color: green;
+}
